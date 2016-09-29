@@ -4,6 +4,12 @@ using System.ComponentModel;
 
 namespace TestArgvToCommandLine
 {
+    // For the record I tried to use this to validate my command line tests, but it returns
+    // BAD results!  It seems to have greedy quote matching and a bunch of other issues.
+
+    // WARNING: DO NOT USE THIS PARSING FUNCTION WITH QUOTED OR ESCAPED COMMAND LINES!
+
+
     // Following code is courtesy of a pinvoke.net sample:
     // http://www.pinvoke.net/default.aspx/shell32.commandlinetoargvw
 

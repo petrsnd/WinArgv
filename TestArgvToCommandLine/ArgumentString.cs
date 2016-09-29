@@ -10,7 +10,7 @@ namespace TestArgvToCommandLine
         {
             var argv = new[] { "" };
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
 
@@ -19,7 +19,7 @@ namespace TestArgvToCommandLine
         {
             var argv = new[] { "", "", "" };
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
 
@@ -28,7 +28,7 @@ namespace TestArgvToCommandLine
         {
             var argv = new[] { "^", "^^", "asdf^asdf" };
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
 
@@ -37,7 +37,7 @@ namespace TestArgvToCommandLine
         {
             var argv = new[] {"asdf fff", "sdlemdk!2930 asd  ds", "   ", "asdf ", " asd ", "  as d'"};
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
 
@@ -50,7 +50,7 @@ namespace TestArgvToCommandLine
                 @"\ \ \\ \\ \ \\   \\ \ \ \\", @" \ \\ ", @"\@#02 384\1293 8!#$%^&^&(( \9\%^$"
             };
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
 
@@ -63,7 +63,7 @@ namespace TestArgvToCommandLine
                 @"asdf\a23\4\@#$""""$""""""""""""""a\"" \\\""@#"
             };
             var arguments = CommandLineCreator.GetArgumentString(argv);
-            var parsed = CmdLineToArgvW.SplitArgs(arguments);
+            var parsed = ProcessRunner.GetArgs(arguments);
             Assert.Equal(argv, parsed);
         }
         
