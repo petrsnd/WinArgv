@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace WinArgv
@@ -45,6 +46,33 @@ namespace WinArgv
         {
             CheckForNullArgumentToGetCommandLine(argv);
             return GetCommandLine(argv.AsEnumerable());
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(IEnumerable<string> argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            var argvIterator = argv.GetEnumerator();
+            if (!argvIterator.MoveNext())
+            {
+                throw new ArgvParserException("Argv cannot be empty for requesting command line, missing Executable");
+            }
+            return new ProcessStartInfo
+            {
+                FileName= ProcessExecutableString(argvIterator.Current),
+                Arguments = HandleRemainingArgv(argvIterator)
+            };
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(string[] argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            return GetProcessStartInfo(argv.AsEnumerable());
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(IList<string> argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            return GetProcessStartInfo(argv.AsEnumerable());
         }
 
         private static string ProcessExecutableString(string executable)
@@ -119,7 +147,8 @@ namespace WinArgv
             }
         }
 
-        private static string ProcessWhitespaceWithQuotesAndHandleSlashes(IEnumerator<char> argumentIterator, bool inWhitespace, string prevSlashes)
+        private static string ProcessWhitespaceWithQuotesAndHandleSlashes(IEnumerator<char> argumentIterator,
+            bool inWhitespace, string prevSlashes)
         {
             // This routine is also based on the information found here:
             // https://msdn.microsoft.com/en-us/library/windows/desktop/17w5ykft(v=vs.85).aspx
