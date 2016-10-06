@@ -147,7 +147,8 @@ namespace WinArgv
             }
         }
 
-        private static string ProcessWhitespaceWithQuotesAndHandleSlashes(IEnumerator<char> argumentIterator, bool inWhitespace, string prevSlashes)
+        private static string ProcessWhitespaceWithQuotesAndHandleSlashes(IEnumerator<char> argumentIterator,
+            bool inWhitespace, string prevSlashes)
         {
             // This routine is also based on the information found here:
             // https://msdn.microsoft.com/en-us/library/windows/desktop/17w5ykft(v=vs.85).aspx
