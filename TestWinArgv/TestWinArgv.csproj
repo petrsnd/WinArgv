@@ -71,9 +71,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArgvToCommandLine.csproj">
+    <ProjectReference Include="..\WinArgv.csproj">
       <Project>{9bd4c09e-fda1-48a4-81ad-e3b9324973a1}</Project>
-      <Name>ArgvToCommandLine</Name>
+      <Name>WinArgv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
