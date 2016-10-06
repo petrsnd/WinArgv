@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.Linq;
+using ArgvToCommandLine;
+using Xunit;
 
 namespace TestArgvToCommandLine
 {
@@ -7,19 +9,23 @@ namespace TestArgvToCommandLine
         [Fact]
         public void SimpleCommand()
         {
-            
+            var argv = new[] {"cmd.exe", "/c", @"C:\Windows\System32\notepad.exe"};
+            var cmdline = CommandLineCreator.GetCommandLine(argv);
+            Assert.Equal("cmd.exe", cmdline.Executable);
+            argv = argv.Skip(1).ToArray();
+            var parsed = ProcessRunner.GetArgs(cmdline.Arguments);
+            Assert.Equal(argv, parsed);
         }
 
         [Fact]
         public void FullCommandPath()
         {
-            
-        }
-
-        [Fact]
-        public void WithArgs()
-        {
-            
+            var argv = new[] {@"C:\Windows\System32\cmd.exe", "/c", @"C:\Windows\System32\notepad.exe"};
+            var cmdline = CommandLineCreator.GetCommandLine(argv);
+            Assert.Equal(@"C:\Windows\System32\cmd.exe", cmdline.Executable);
+            argv = argv.Skip(1).ToArray();
+            var parsed = ProcessRunner.GetArgs(cmdline.Arguments);
+            Assert.Equal(argv, parsed);
         }
     }
 }
