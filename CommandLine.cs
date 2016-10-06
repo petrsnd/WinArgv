@@ -1,4 +1,4 @@
-﻿namespace ArgvToCommandLine
+﻿namespace WinArgv
 {
     public class CommandLine
     {

@@ -7,8 +7,8 @@
     <ProjectGuid>{9BD4C09E-FDA1-48A4-81AD-E3B9324973A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArgvToCommandLine</RootNamespace>
-    <AssemblyName>ArgvToCommandLine</AssemblyName>
+    <RootNamespace>WinArgv</RootNamespace>
+    <AssemblyName>WinArgv</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

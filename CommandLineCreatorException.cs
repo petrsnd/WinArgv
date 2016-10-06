@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace ArgvToCommandLine
+namespace WinArgv
 {
     [Serializable]
     public class CommandLineCreatorException : Exception

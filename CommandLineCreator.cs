@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace ArgvToCommandLine
+namespace WinArgv
 {
     public static class CommandLineCreator
     {
