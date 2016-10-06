@@ -9,8 +9,8 @@
     <ProjectGuid>{EFA7FA03-101F-4E45-AD9A-EB0011B46BE9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestArgvToCommandLine</RootNamespace>
-    <AssemblyName>TestArgvToCommandLine</AssemblyName>
+    <RootNamespace>TestWinArgv</RootNamespace>
+    <AssemblyName>TestWinArgv</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -71,9 +71,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArgvToCommandLine.csproj">
+    <ProjectReference Include="..\WinArgv.csproj">
       <Project>{9bd4c09e-fda1-48a4-81ad-e3b9324973a1}</Project>
-      <Name>ArgvToCommandLine</Name>
+      <Name>WinArgv</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 
-namespace TestArgvToCommandLine
+namespace TestWinArgv
 {
     // For the record I tried to use this to validate my command line tests, but it returns
     // BAD results!  It seems to have greedy quote matching and a bunch of other issues.
