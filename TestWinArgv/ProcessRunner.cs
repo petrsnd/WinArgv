@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
-namespace TestArgvToCommandLine
+namespace TestWinArgv
 {
     public static class ProcessRunner
     {
@@ -53,7 +53,7 @@ namespace TestArgvToCommandLine
                     var line = proc.StandardOutput.ReadLine();
                     if (line != null)
                     {
-                        stringList.Add(line.TrimEnd(new[] { '\r', '\n' }));
+                        stringList.Add(line.TrimEnd('\r', '\n'));
                     }
                 }
                 proc.WaitForExit();

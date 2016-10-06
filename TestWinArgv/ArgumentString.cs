@@ -1,7 +1,7 @@
 ﻿using ArgvToCommandLine;
 using Xunit;
 
-namespace TestArgvToCommandLine
+namespace TestWinArgv
 {
     public class ArgumentString
     {
