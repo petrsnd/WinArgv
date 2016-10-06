@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace WinArgv
@@ -45,6 +46,33 @@ namespace WinArgv
         {
             CheckForNullArgumentToGetCommandLine(argv);
             return GetCommandLine(argv.AsEnumerable());
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(IEnumerable<string> argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            var argvIterator = argv.GetEnumerator();
+            if (!argvIterator.MoveNext())
+            {
+                throw new ArgvParserException("Argv cannot be empty for requesting command line, missing Executable");
+            }
+            return new ProcessStartInfo
+            {
+                FileName= ProcessExecutableString(argvIterator.Current),
+                Arguments = HandleRemainingArgv(argvIterator)
+            };
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(string[] argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            return GetProcessStartInfo(argv.AsEnumerable());
+        }
+
+        public static ProcessStartInfo GetProcessStartInfo(IList<string> argv)
+        {
+            CheckForNullArgumentToGetCommandLine(argv);
+            return GetProcessStartInfo(argv.AsEnumerable());
         }
 
         private static string ProcessExecutableString(string executable)
