@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WinArgv
 {
-    public static class CommandLineCreator
+    public static class ArgvParser
     {
         public static string GetArgumentString(IEnumerable<string> argv)
         {
@@ -26,7 +26,7 @@ namespace WinArgv
             var argvIterator = argv.GetEnumerator();
             if (!argvIterator.MoveNext())
             {
-                throw new CommandLineCreatorException("Argv cannot be empty for requesting command line, missing Executable");
+                throw new ArgvParserException("Argv cannot be empty for requesting command line, missing Executable");
             }
             return new CommandLine
             {
@@ -58,7 +58,7 @@ namespace WinArgv
         {
             if (argv == null)
             {
-                throw new CommandLineCreatorException("You cannot process a command line from a null argument vector");
+                throw new ArgvParserException("You cannot process a command line from a null argument vector");
             }
         }
 
@@ -83,7 +83,7 @@ namespace WinArgv
         {
             if (argument == null)
             {
-                throw new CommandLineCreatorException("Element in argument vector cannot be null");
+                throw new ArgvParserException("Element in argument vector cannot be null");
             }
             if (argument == "")
             {

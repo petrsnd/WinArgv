@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandLine.cs" />
-    <Compile Include="CommandLineCreator.cs" />
-    <Compile Include="CommandLineCreatorException.cs" />
+    <Compile Include="ArgvParser.cs" />
+    <Compile Include="ArgvParserException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

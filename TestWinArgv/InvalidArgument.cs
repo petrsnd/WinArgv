@@ -10,30 +10,30 @@ namespace TestWinArgv
         [Fact]
         public void NullCommandLineTest()
         {
-            Assert.Throws<CommandLineCreatorException>(() => { CommandLineCreator.GetCommandLine(null); });
+            Assert.Throws<ArgvParserException>(() => { ArgvParser.GetCommandLine(null); });
         }
 
         [Fact]
         public void NullArgumentStringTest()
         {
-            Assert.Null(CommandLineCreator.GetArgumentString(null));
+            Assert.Null(ArgvParser.GetArgumentString(null));
         }
 
         [Fact]
         public void EmptyCommandLineTest()
         {
-            Assert.Throws<CommandLineCreatorException>(() => { CommandLineCreator.GetCommandLine(new string[] {}); });
-            Assert.Throws<CommandLineCreatorException>(() => { CommandLineCreator.GetCommandLine(new List<string>()); });
-            Assert.Throws<CommandLineCreatorException>(
-                () => { CommandLineCreator.GetCommandLine(new List<string>().AsEnumerable()); });
+            Assert.Throws<ArgvParserException>(() => { ArgvParser.GetCommandLine(new string[] {}); });
+            Assert.Throws<ArgvParserException>(() => { ArgvParser.GetCommandLine(new List<string>()); });
+            Assert.Throws<ArgvParserException>(
+                () => { ArgvParser.GetCommandLine(new List<string>().AsEnumerable()); });
         }
 
         [Fact]
         void EmptyArgumentStringTest()
         {
-            Assert.Null(CommandLineCreator.GetArgumentString(new string[] { }));
-            Assert.Null(CommandLineCreator.GetArgumentString(new List<string>()));
-            Assert.Null(CommandLineCreator.GetArgumentString(new List<string>().AsEnumerable()));
+            Assert.Null(ArgvParser.GetArgumentString(new string[] { }));
+            Assert.Null(ArgvParser.GetArgumentString(new List<string>()));
+            Assert.Null(ArgvParser.GetArgumentString(new List<string>().AsEnumerable()));
         }
     }
 }
