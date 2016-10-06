@@ -89,11 +89,11 @@ namespace ArgvToCommandLine
             {
                 return "\"\"";
             }
-            var processed = ProcessSlashes(argument.GetEnumerator(), "");
-            return ProcessWhitespace(processed.GetEnumerator(), false, "");
+            var processed = ProcessSlashesAndDoubleQuotes(argument.GetEnumerator(), "");
+            return ProcessWhitespaceWithQuotesAndHandleSlashes(processed.GetEnumerator(), false, "");
         }
 
-        private static string ProcessSlashes(IEnumerator<char> argumentIterator, string prevSlashes)
+        private static string ProcessSlashesAndDoubleQuotes(IEnumerator<char> argumentIterator, string prevSlashes)
         {
             // This routine is based on the information found here:
             // https://msdn.microsoft.com/en-us/library/windows/desktop/17w5ykft(v=vs.85).aspx
@@ -107,19 +107,19 @@ namespace ArgvToCommandLine
             {
                 case '\\':
                     // Accumulate the backslash as keep going
-                    return ProcessSlashes(argumentIterator, prevSlashes + argumentIterator.Current);
+                    return ProcessSlashesAndDoubleQuotes(argumentIterator, prevSlashes + argumentIterator.Current);
                 case '"':
                     // Double all the backslashes because it is followed by a "
                     return prevSlashes.Replace("\\", "\\\\") + "\\" + argumentIterator.Current +
-                           ProcessSlashes(argumentIterator, "");
+                           ProcessSlashesAndDoubleQuotes(argumentIterator, "");
                 default:
                     // Any other character means we don't need to escape preceding
                     // backslash with another backslash because they will all be literal.
-                    return prevSlashes + argumentIterator.Current + ProcessSlashes(argumentIterator, "");
+                    return prevSlashes + argumentIterator.Current + ProcessSlashesAndDoubleQuotes(argumentIterator, "");
             }
         }
 
-        private static string ProcessWhitespace(IEnumerator<char> argumentIterator, bool inWhitespace, string prevSlashes)
+        private static string ProcessWhitespaceWithQuotesAndHandleSlashes(IEnumerator<char> argumentIterator, bool inWhitespace, string prevSlashes)
         {
             // This routine is also based on the information found here:
             // https://msdn.microsoft.com/en-us/library/windows/desktop/17w5ykft(v=vs.85).aspx
@@ -128,23 +128,39 @@ namespace ArgvToCommandLine
             // work the way any reasonable person would expect.  Quote matching
             // seems to be greedy and the only purpose for quotes is to surround
             // spaces.  Quotes are allowed on the inside of an argument.  Weird.
+
+            // If we are on the last token, then end with a quote if in whitespace
+            // or an empty string as we return to unroll the recursion.
             if (!argumentIterator.MoveNext())
             {
                 return inWhitespace ? "\"" : "";
             }
+
+            // The next token is horizontal whitespace
             if (argumentIterator.Current == ' ' || argumentIterator.Current == '\t')
             {
-                // If we are already in whitespace just continuing writing string.
+                // If we are already in whitespace, then just continuing writing string.
                 if (inWhitespace)
-                    return argumentIterator.Current + ProcessWhitespace(argumentIterator, true, prevSlashes);
-                // If we are just entering whitespace add a double quote before it.
-                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, true, prevSlashes);
+                    return argumentIterator.Current +
+                           ProcessWhitespaceWithQuotesAndHandleSlashes(argumentIterator, true, "");
+                // If we are just entering whitespace, then add a double quote before it
+                // but first add any accumulated slashes to duplicate them
+                return prevSlashes + "\"" + argumentIterator.Current +
+                       ProcessWhitespaceWithQuotesAndHandleSlashes(argumentIterator, true, "");
             }
-            // If we have been in whitespace add a double quote to end it.
+
+            // If we have been in whitespace, then add a double quote to end it. If the
+            // next token is a slash don't forget to accumulate it.
             if (inWhitespace)
-                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, false, prevSlashes);
-            // Otherwise, just keep writing the string.
-            return argumentIterator.Current + ProcessWhitespace(argumentIterator, false, prevSlashes);
+                return "\"" + argumentIterator.Current +
+                       ProcessWhitespaceWithQuotesAndHandleSlashes(argumentIterator, false,
+                           argumentIterator.Current == '\\' ? prevSlashes + "\\" : "");
+
+            // If we just encountered a slash then accumulate it as you continue. 
+            // Otherwise, just continue writing the string.
+            return argumentIterator.Current +
+                   ProcessWhitespaceWithQuotesAndHandleSlashes(argumentIterator, false,
+                       argumentIterator.Current == '\\' ? prevSlashes + "\\" : "");
         }
     }
 }

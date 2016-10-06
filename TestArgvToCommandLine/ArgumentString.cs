@@ -42,7 +42,19 @@ namespace TestArgvToCommandLine
         }
 
         [Fact]
-        public void Slashes()
+        public void SlashesAndSpacesSimple()
+        {
+            var argv = new[]
+            {
+                @"\ ", @" \", @" \ "
+            };
+            var arguments = CommandLineCreator.GetArgumentString(argv);
+            var parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
+        }
+
+        [Fact]
+        public void SlashesCrazy()
         {
             var argv = new[]
             {
@@ -60,7 +72,7 @@ namespace TestArgvToCommandLine
             var argv = new[]
             {
                 @"""", @""" """, @"\"" \""asdf """, @"a""a""a""a""", @"""\"" \\"" \\\"" \\\\""""",
-                @"asdf\a23\4\@#$""""$""""""""""""""a\"" \\\""@#"
+                @"asdf\a23\4\@#$""""$""""""""""""""a\"" \\\""@#", @" "" ", @""" " , @" """
             };
             var arguments = CommandLineCreator.GetArgumentString(argv);
             var parsed = ProcessRunner.GetArgs(arguments);
@@ -70,13 +82,34 @@ namespace TestArgvToCommandLine
         [Fact]
         public void WhackyComplicated()
         {
-            
+            var argv = new[]
+            {
+                @"  ", @""" \\ """, @" \ \\ "" "" \\\ ""   \ \\\ "" ", @"\\\\ "" "" \ \ \ \ \ \ \"
+            };
+            var arguments = CommandLineCreator.GetArgumentString(argv);
+            var parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
         }
 
         [Fact]
         public void MsdnExamples()
         {
-
+            var argv = new[] {"abc", "d", "e"};
+            var arguments = CommandLineCreator.GetArgumentString(argv);
+            var parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
+            argv = new[] { @"a\\\b", "de fg", "h" };
+            arguments = CommandLineCreator.GetArgumentString(argv);
+            parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
+            argv = new[] { @"a""b", "c", "d" };
+            arguments = CommandLineCreator.GetArgumentString(argv);
+            parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
+            argv = new[] { @"a\\b c", "d", "e" };
+            arguments = CommandLineCreator.GetArgumentString(argv);
+            parsed = ProcessRunner.GetArgs(arguments);
+            Assert.Equal(argv, parsed);
         }
     }
 }
