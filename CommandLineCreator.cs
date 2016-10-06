@@ -90,7 +90,7 @@ namespace ArgvToCommandLine
                 return "\"\"";
             }
             var processed = ProcessSlashes(argument.GetEnumerator(), "");
-            return ProcessWhitespace(processed.GetEnumerator(), false);
+            return ProcessWhitespace(processed.GetEnumerator(), false, "");
         }
 
         private static string ProcessSlashes(IEnumerator<char> argumentIterator, string prevSlashes)
@@ -101,7 +101,7 @@ namespace ArgvToCommandLine
             {
                 // The string ends with a \ which means we need to double them
                 // all because we are going to wrap the string in double quotes.
-                return prevSlashes.Replace("\\", "\\\\");
+                return prevSlashes;
             }
             switch (argumentIterator.Current)
             {
@@ -119,7 +119,7 @@ namespace ArgvToCommandLine
             }
         }
 
-        private static string ProcessWhitespace(IEnumerator<char> argumentIterator, bool inWhitespace)
+        private static string ProcessWhitespace(IEnumerator<char> argumentIterator, bool inWhitespace, string prevSlashes)
         {
             // This routine is also based on the information found here:
             // https://msdn.microsoft.com/en-us/library/windows/desktop/17w5ykft(v=vs.85).aspx
@@ -136,15 +136,15 @@ namespace ArgvToCommandLine
             {
                 // If we are already in whitespace just continuing writing string.
                 if (inWhitespace)
-                    return argumentIterator.Current + ProcessWhitespace(argumentIterator, true);
+                    return argumentIterator.Current + ProcessWhitespace(argumentIterator, true, prevSlashes);
                 // If we are just entering whitespace add a double quote before it.
-                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, true);
+                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, true, prevSlashes);
             }
             // If we have been in whitespace add a double quote to end it.
             if (inWhitespace)
-                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, false);
+                return "\"" + argumentIterator.Current + ProcessWhitespace(argumentIterator, false, prevSlashes);
             // Otherwise, just keep writing the string.
-            return argumentIterator.Current + ProcessWhitespace(argumentIterator, false);
+            return argumentIterator.Current + ProcessWhitespace(argumentIterator, false, prevSlashes);
         }
     }
 }
