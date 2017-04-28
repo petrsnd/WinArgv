@@ -43,6 +43,7 @@ namespace TestWinArgv
                 proc.StartInfo.Arguments = argumentString;
                 proc.StartInfo.UseShellExecute = false;
                 proc.StartInfo.RedirectStandardOutput = true;
+                proc.StartInfo.CreateNoWindow = true;
                 if (!proc.Start())
                 {
                     throw new Exception("ProcessRunner test binary failed to start");
