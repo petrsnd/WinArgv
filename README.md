@@ -1,5 +1,5 @@
 # WinArgv
-Windows command line generation from a standard argv array.
+Windows command line generation from a standard args array (POSIX argv style)
 
 ## Background
 The C# Process.Start() method receives all arguments as a string to launch an executable.  This places the burden on the caller for
