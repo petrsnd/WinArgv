@@ -46,11 +46,12 @@ namespace TestWinArgv
         }
 
         [DllImport("shell32.dll", SetLastError = true)]
-        static extern IntPtr CommandLineToArgvW(
+        private static extern IntPtr 
+            CommandLineToArgvW(
             [MarshalAs(UnmanagedType.LPWStr)] string lpCmdLine,
             out int pNumArgs);
 
         [DllImport("kernel32.dll")]
-        static extern IntPtr LocalFree(IntPtr hMem);
+        private static extern IntPtr LocalFree(IntPtr hMem);
     }
 }
