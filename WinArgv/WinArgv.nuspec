@@ -8,7 +8,6 @@
     <owners>$author$</owners>
     <licenseUrl>https://github.com/petrsnd/WinArgv/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/petrsnd/WinArgv</projectUrl>
-    <iconUrl></iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial release.  Worry-free argument string generation from a simple argv array.  Use this, and don't get burned by spaces, escaping, and quoting.  Generate argument string, command line, or ProcessStartInfo.</releaseNotes>

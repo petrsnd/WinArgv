@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/belpoe9qhduusy3j?svg=true)](https://ci.appveyor.com/project/petrsnd/cfa533rs232)
+
 # WinArgv
 Windows command line generation from a standard args array (POSIX argv style)
 
