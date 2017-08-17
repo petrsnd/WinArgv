@@ -1,4 +1,6 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/belpoe9qhduusy3j?svg=true)](https://ci.appveyor.com/project/petrsnd/cfa533rs232)
+[![Build status](https://ci.appveyor.com/api/projects/status/t625yp2mviq0iudr?svg=true)](https://ci.appveyor.com/project/petrsnd/winargv)
+
+NuGet.org is the best place to get WinArgv: [Nuget.Org/WinArgv](https://www.nuget.org/packages/WinArgv/)
 
 # WinArgv
 Windows command line generation from a standard args array (POSIX argv style)
