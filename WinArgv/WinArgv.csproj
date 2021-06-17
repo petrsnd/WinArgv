@@ -13,7 +13,7 @@
     <PackageIcon>Content\images\WinArgv.png</PackageIcon>
     <RepositoryUrl>https://github.com/OneIdentity/SafeguardDotNet</RepositoryUrl>
     <Version>9999.9999.9999</Version>
-    <Description>Worry-free argument string generation from a simple argv array.</Description>
+    <Description>Windows command line generation from a standard args array (POSIX argv style).</Description>
     <AssemblyVersion>9999.9999.9999.9999</AssemblyVersion>
     <FileVersion>9999.9999.9999.9999</FileVersion>
     <AssemblyName>WinArgv</AssemblyName>
@@ -23,9 +23,13 @@
     <PackageTags>command;line;commandline;argument;option;library;syntax;shell;process</PackageTags>
     <PackageReleaseNotes>Initial .NET Standard release.  Previously only available for .NET Framework.
 
-Worry-free argument string generation from a simple argv array.
+Creating a command line programmatically to execute a program with a complicated argument list should not be a difficult problem.
+However, Windows places this burden on the programmer.  Instead of just allowing programmers to construct an array with exactly
+the arguments they want to appear in the argument array of Main(), Windows programmers need to know how to properly escape the
+entire argument list as a string.
 
-Use this, and don't get burned by spaces, escaping, and quoting.  Generate Windows Process.Start() argument string, command line, or ProcessStartInfo.</PackageReleaseNotes>
+Use WinArgv, and don't get burned by spaces, escaping, and quoting.  Generate Windows and argument string, command line, or 
+ProcessStartInfo to pass to Process.Start().</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
