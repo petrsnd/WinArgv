@@ -1,51 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9BD4C09E-FDA1-48A4-81AD-E3B9324973A1}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>WinArgv</RootNamespace>
+    <PackageId>WinArgv</PackageId>
+    <Company>Petrsnd.Org</Company>
+    <Authors>petrsnd</Authors>
+    <Copyright>(c) 2021 petrsnd. All rights reserved.</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/petrsnd/WinArgv</PackageProjectUrl>
+    <PackageIcon>Content\images\WinArgv.png</PackageIcon>
+    <RepositoryUrl>https://github.com/OneIdentity/SafeguardDotNet</RepositoryUrl>
+    <Version>9999.9999.9999</Version>
+    <Description>Windows command line generation from a standard args array (POSIX argv style).</Description>
+    <AssemblyVersion>9999.9999.9999.9999</AssemblyVersion>
+    <FileVersion>9999.9999.9999.9999</FileVersion>
     <AssemblyName>WinArgv</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>command;line;commandline;argument;option;library;syntax;shell;process</PackageTags>
+    <PackageReleaseNotes>Initial .NET Standard release.  Previously only available for .NET Framework.
+
+Creating a command line programmatically to execute a program with a complicated argument list should not be a difficult problem.
+However, Windows places this burden on the programmer.  Instead of just allowing programmers to construct an array with exactly
+the arguments they want to appear in the argument array of Main(), Windows programmers need to know how to properly escape the
+entire argument list as a string.
+
+Use WinArgv, and don't get burned by spaces, escaping, and quoting.  Generate Windows and argument string, command line, or 
+ProcessStartInfo to pass to Process.Start().</PackageReleaseNotes>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <None Include="..\WinArgv.png" Link="WinArgv.png" Pack="true" PackagePath="Content\images\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CommandLine.cs" />
-    <Compile Include="ArgvParser.cs" />
-    <Compile Include="ArgvParserException.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
