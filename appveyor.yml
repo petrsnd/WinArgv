@@ -17,7 +17,7 @@ test: off
 deploy:
 - provider: NuGet
   api_key:
-    secure: VBlOrLsxmUs+Y3Ri1c0lRxefQaose+9IqnZLat0lHzwLwILdwYQC86/BwmpGZl6j
+    secure: YHb6jbBI5yVXOUk8PhT6LyYlxXx3DRFBOMFlbmFdIZimYJYrrzGo7nOZiUNULa4P
 notifications:
 - provider: Email
   to:
