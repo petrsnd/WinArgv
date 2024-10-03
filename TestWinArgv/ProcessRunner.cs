@@ -16,7 +16,7 @@ namespace TestWinArgv
             {
                 if (string.IsNullOrEmpty(_testBinary))
                 {
-                    var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+                    var codeBaseUrl = new Uri(Assembly.GetExecutingAssembly().Location);
                     var codeBasePath = Uri.UnescapeDataString(codeBaseUrl.AbsolutePath);
                     var dirPath = Path.GetDirectoryName(codeBasePath);
                     if (dirPath == null)

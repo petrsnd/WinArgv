@@ -1,9 +1,9 @@
-version: 1.0.0-release-{build}
+version: 1.0.1-release-{build}
 branches:
   only:
   - master
   - release-1.0
-image: Visual Studio 2019
+image: Visual Studio 2022
 configuration: Release
 before_build:
 - ps: '& .\appveyor-prebuild.ps1'
@@ -18,7 +18,7 @@ test: off
 deploy:
 - provider: NuGet
   api_key:
-    secure: VBlOrLsxmUs+Y3Ri1c0lRxefQaose+9IqnZLat0lHzwLwILdwYQC86/BwmpGZl6j
+    secure: Sz7kT1QLRqAyGmL+IiJdhRm0aDu7vmaZcyVnP6AJ2cu//4EOrPm6BaRxFZrvz7ex
 notifications:
 - provider: Email
   to:
