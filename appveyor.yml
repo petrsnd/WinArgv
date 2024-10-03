@@ -1,4 +1,4 @@
-version: 1.0.0-release-{build}
+version: 1.0.1-release-{build}
 branches:
   only:
   - master
