@@ -32,7 +32,7 @@ This library provides a way to build up process arguments in an array, similar t
 executable should be placed at index 0, so really it is more like what you would see in the argv array in `main()` on a POSIX system.
 
 ```C#
-var argv = new List<string> {@"C:\bin\grandmaster-flash.exe", "don't push me cuz I'm close to the edge", "I'm trying not to lose my head'"};
+var argv = new List<string> {@"C:\bin\grandmaster-flash.exe", "don't push me cuz I'm close to the edge", "I'm trying not to lose my head!"};
 // create a ProcessStartInfo
 var startInfo = ArgvParser.GetProcessStartInfo(argv);
 // or, a commandLine
