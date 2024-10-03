@@ -10,6 +10,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/petrsnd/WinArgv</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>Content\images\WinArgv.png</PackageIcon>
     <RepositoryUrl>https://github.com/OneIdentity/SafeguardDotNet</RepositoryUrl>
     <Version>9999.9999.9999</Version>
@@ -34,6 +35,7 @@ ProcessStartInfo to pass to Process.Start().</PackageReleaseNotes>
 
   <ItemGroup>
     <None Include="..\WinArgv.png" Link="WinArgv.png" Pack="true" PackagePath="Content\images\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
