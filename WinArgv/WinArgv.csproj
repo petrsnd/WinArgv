@@ -6,7 +6,7 @@
     <PackageId>WinArgv</PackageId>
     <Company>Petrsnd.Org</Company>
     <Authors>petrsnd</Authors>
-    <Copyright>(c) 2021 petrsnd. All rights reserved.</Copyright>
+    <Copyright>(c) 2024 petrsnd. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/petrsnd/WinArgv</PackageProjectUrl>
