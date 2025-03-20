@@ -22,15 +22,10 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageTags>command;line;commandline;argument;option;library;syntax;shell;process</PackageTags>
-    <PackageReleaseNotes>Initial .NET Standard release.  Previously only available for .NET Framework.
-
-Creating a command line programmatically to execute a program with a complicated argument list should not be a difficult problem.
-However, Windows places this burden on the programmer.  Instead of just allowing programmers to construct an array with exactly
-the arguments they want to appear in the argument array of Main(), Windows programmers need to know how to properly escape the
-entire argument list as a string.
-
-Use WinArgv, and don't get burned by spaces, escaping, and quoting.  Generate Windows and argument string, command line, or 
-ProcessStartInfo to pass to Process.Start().</PackageReleaseNotes>
+    <PackageReleaseNotes>
+- Updated Nuget packages and framework targets
+- Updated copyrights
+    </PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
